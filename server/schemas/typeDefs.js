@@ -1,28 +1,43 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Tech {
+  type User {
     _id: ID!
-    name: String!
+    username: String!
+    email: String!
+    password: String!
+    events: [Event]
   }
 
-  type Matchup {
+  type Event {
     _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+    title: String!
+    description: String!
+
+    // CHANGE>>>>>?
+    user: mongoose.Schema.Types.ObjectId
+
+    date: Date
+    cost: Int
+    location: String!
+    attendees: [User]
+    
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+
+    // tech: [Tech]
+    // matchups(_id: String): [Matchup]
+
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
+
+    // createMatchup(tech1: String!, tech2: String!): Matchup
+    // createVote(_id: String!, techNum: Int!): Matchup
+
   }
 `;
 
 module.exports = typeDefs;
+
