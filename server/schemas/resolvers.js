@@ -18,18 +18,31 @@ const resolvers = {
     },
   },
   Mutation: {
-    createMatchup: async (parent, args) => {
-      const matchup = await Matchup.create(args);
-      return matchup;
+    createUser: async (parent, args) => {
+      const user = await User.create(args);
+      return user;
     },
-    createVote: async (parent, { _id, techNum }) => {
-      const vote = await Matchup.findOneAndUpdate(
-        { _id },
-        { $inc: { [`tech${techNum}_votes`]: 1 } },
-        { new: true }
-      );
-      return vote;
+    createEvent: async (parent, args) => {
+      const event = await Event.create(args);
+      return event;
     },
+    removeUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId });
+    },
+    removeEvent: async (parent, { eventId }) => {
+      return Event.findOneAndDelete({ _id: eventId });
+    },
+    
+    //ADD UPDATE USER,EVENT,
+
+    // create: async (parent, { _id, techNum }) => {
+    //   const vote = await Matchup.findOneAndUpdate(
+    //     { _id },
+    //     { $inc: { [`tech${techNum}_votes`]: 1 } },
+    //     { new: true }
+    //   );
+    //   return vote;
+    // },
   },
 };
 

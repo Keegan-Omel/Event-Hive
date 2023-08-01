@@ -25,6 +25,9 @@ const eventSchema = new Schema(
     cost: {
       type: Number,
     },
+    seating: {
+      type: Number,  
+    },
     location: {
       type: String,
       required: true,
@@ -58,7 +61,12 @@ const eventSchema = new Schema(
 
     
   },
-  { timestamps: true }
+  { timestamps: true },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
 const Event = mongoose.model("Event", eventSchema);
@@ -69,5 +77,15 @@ Event.schema.path("date").validate(function (value) {
   const currentDate = new Date();
   return value > currentDate;
 }, "The date for an event must be in the future.");
+
+
+userSchema.virtual("seating full").get(function () {
+  if (Event.attendees == Event.seatings){
+    return 'true'
+  } else {
+    return 'false'
+  }
+});
+
 
 module.exports = Event;

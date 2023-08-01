@@ -1,0 +1,33 @@
+[
+    {
+        "title": "Event 1",
+        "description": "this is an event ",
+        "user": "1"
+        "cost": 45,
+        "location": "ABC Street",
+      },
+      {
+        "title": "Event 2",
+        "description": "this is an event ",
+        "cost": 45,
+        "location": "ABC Street", 
+      },
+      {
+        "title": "Event 3",
+        "description": "this is an event ",
+        "cost": 45,
+        "location": "ABC Street",
+      },
+      {
+        "title": "Event 4",
+        "description": "this is an event ",
+        "cost": 45,
+        "location": "ABC Street",
+      },
+      {
+        "title": "Event 5",
+        "description": "this is an event ",
+        "cost": 45,
+        "location": "ABC Street",
+      },
+]
