@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -13,31 +13,120 @@ const typeDefs = gql`
     _id: ID!
     title: String!
     description: String!
-
-    // CHANGE>>>>>?
-    user: mongoose.Schema.Types.ObjectId
-
-    date: Date
+    user: User
+    date: String!
     cost: Int
+
+    seating: Int
+    
     location: String!
     attendees: [User]
-    
+    seatingFull: Boolean
   }
 
   type Query {
 
-    // tech: [Tech]
-    // matchups(_id: String): [Matchup]
+    users {
+      _id
+      username
+      email
+      events {
+        _id
+        title
+        description
+        cost
+        date
+        location
+        seatingFull
+        attendees {
+          _id
+          username
+        }
+      }
+    }
+
+    user(_id: $id) {
+      _id
+      username
+      email
+      events {
+        _id
+        title
+      }
+    }
+
+    events {
+      _id
+      title
+      description
+      cost
+      date
+      location
+      seatingFull
+      user {
+        _id
+        username
+      }
+      attendees {
+        _id
+        username
+      }
+    }
+
+    event(_id: $id) {
+      _id
+      title
+      description
+      cost
+      date
+      location
+      seatingFull
+      user {
+        _id
+        username
+      }
+      attendees {
+        _id
+        username
+      }
+    }
 
   }
 
   type Mutation {
 
-    // createMatchup(tech1: String!, tech2: String!): Matchup
-    // createVote(_id: String!, techNum: Int!): Matchup
+    createUser(username: $username, email: $email, password: $password) {
+      _id
+      username
+      email
+      events {
+        _id
+        title
+      }
+      
+    }
+
+    createEvent(title: $title, description: $description, date: $date, location: $location, cost: $cost, seating: $seating) {
+      _id
+      title
+      description
+      cost
+      date
+      location
+      seatingFull
+      user {
+        _id
+        username
+      }
+      attendees {
+        _id
+        username
+      }
+    }
 
   }
 `;
 
 module.exports = typeDefs;
 
+//checkPoint!!!!!NEW!!!!

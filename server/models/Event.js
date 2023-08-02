@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, mongoose } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
 const eventSchema = new Schema(
@@ -32,34 +32,11 @@ const eventSchema = new Schema(
       type: String,
       required: true,
     },
-    
-
     attendees: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     }],
 
-    // comments: [
-    //   {
-    //     commentText: {
-    //       type: String,
-    //       required: true,
-    //       minlength: 1,
-    //       maxlength: 280,
-    //     },
-    //     commentAuthor: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //     createdAt: {
-    //       type: Date,
-    //       default: Date.now,
-    //       get: (timestamp) => dateFormat(timestamp),
-    //     },
-    //   },
-    // ],
-
-    
   },
   { timestamps: true },
   {
@@ -71,20 +48,14 @@ const eventSchema = new Schema(
 
 const Event = mongoose.model("Event", eventSchema);
 
-
-
 Event.schema.path("date").validate(function (value) {
   const currentDate = new Date();
   return value > currentDate;
 }, "The date for an event must be in the future.");
 
 
-userSchema.virtual("seating full").get(function () {
-  if (Event.attendees == Event.seatings){
-    return 'true'
-  } else {
-    return 'false'
-  }
+eventSchema.virtual("seatingFull").get(function () {
+  return this.attendees.length >= this.seating;
 });
 
 

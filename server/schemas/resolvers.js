@@ -1,48 +1,43 @@
-const { User, Event } = require('../models');
+const { User, Event } = require("../models");
 
 const resolvers = {
   Query: {
-    user: async () => {
+    users: async () => {
       return User.find({});
     },
-    event: async () => {
+    user: async (parent, { _id }) => {
+      return User.findById(_id);
+    },
+    events: async () => {
       return Event.find({});
     },
-    users: async (parent, { _id }) => {
-      const params = _id ? { _id } : {};
-      return User.find(params);
-    },
-    events: async (parent, { _id }) => {
-      const params = _id ? { _id } : {};
-      return Event.find(params);
+    event: async (parent, { _id }) => {
+      return Event.findById(_id);
     },
   },
   Mutation: {
-    createUser: async (parent, args) => {
+    createUser: async (_, args) => {
       const user = await User.create(args);
       return user;
     },
-    createEvent: async (parent, args) => {
+    createEvent: async (_, args) => {
       const event = await Event.create(args);
       return event;
     },
-    removeUser: async (parent, { userId }) => {
-      return User.findOneAndDelete({ _id: userId });
+    removeUser: async (_, { _id }) => {
+      return User.findByIdAndDelete(_id);
     },
-    removeEvent: async (parent, { eventId }) => {
-      return Event.findOneAndDelete({ _id: eventId });
+    removeEvent: async (_, { _id }) => {
+      return Event.findByIdAndDelete(_id);
     },
-    
-    //ADD UPDATE USER,EVENT,
-
-    // create: async (parent, { _id, techNum }) => {
-    //   const vote = await Matchup.findOneAndUpdate(
-    //     { _id },
-    //     { $inc: { [`tech${techNum}_votes`]: 1 } },
-    //     { new: true }
-    //   );
-    //   return vote;
-    // },
+  },
+  Event: {
+    user: async (parent) => {
+      return User.findById(parent.user);
+    },
+    seatingFull: async (parent) => {
+      return parent.attendees.length >= parent.seating;
+    },
   },
 };
 
