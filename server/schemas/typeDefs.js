@@ -71,5 +71,3 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
-
-//checkPoint!!!!!NEW!!!!
