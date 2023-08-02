@@ -1,7 +1,8 @@
-const { gql } = require("apollo-server-express");
+import { gql } from '@apollo/client';
 
 const typeDefs = gql`
   type User {
+
     _id: ID!
     username: String!
     email: String!
@@ -10,6 +11,7 @@ const typeDefs = gql`
   }
 
   type Event {
+
     _id: ID!
     title: String!
     description: String!
@@ -23,17 +25,20 @@ const typeDefs = gql`
   }
 
   type Query {
+
     users: [User]
+
     user(_id: ID!): User
+
     events: [Event]
+
     event(_id: ID!): Event
   }
 
   type Mutation {
-    # Create a new user
-    createUser(username: String!, email: String!, password: String!): User
 
-    # Update an existing user by ID
+    createUser(username: String!, email: String!, password: String!): User
+    
     updateUser(
       _id: ID!
       username: String
@@ -41,10 +46,8 @@ const typeDefs = gql`
       password: String
     ): User
 
-    # Remove a user by ID
     removeUser(_id: ID!): User
 
-    # Create a new event
     createEvent(
       title: String!
       description: String!
@@ -54,7 +57,6 @@ const typeDefs = gql`
       seating: Int
     ): Event
 
-    # Update an existing event by ID
     updateEvent(
       _id: ID!
       title: String
@@ -65,11 +67,10 @@ const typeDefs = gql`
       seating: Int
     ): Event
 
-    # Remove an event by ID
     removeEvent(_id: ID!): Event
   }
 `;
 
-module.exports = typeDefs;
+export default typeDefs;
 
-//checkPoint!!!!!NEW!!!!
+// checkpoint!!
