@@ -1,35 +1,43 @@
-import { gql } from '@apollo/client';
+// IMPORT GQL FUNCTION FROM THE APOLLO CLIENT TO DEFINE GRAPHQL QUERIES
 
-export const GET_ALL_USER = gql`
-query Users {
-  users {
-    id
-    username
-    email
-    events {
+// GRAPHQL QUERY TO GET ALL USERS ALONG WITH THEIR EVENTS
+export const GET_ALL_USERS = gql`
+  query Users {
+    users {
       id
-      title
-      description
+      username
+      email
+      events {
+        id
+        title
+        cost
+        description
+        location
+      }
     }
   }
-}
 `;
 
+// GRAPHQL QUERY TO GET A SINGLE USER BY USERID ALONG WITH THEIR EVENTS
 export const GET_ONE_USER = gql`
-query Users {
-  users {
-    id
-    username
-    email
-    events {
+  query User($userId: ID!) {
+    user(id: $userId) {
       id
-      title
-      description
+      username
+      email
+      events {
+        id
+        title
+        description
+        cost
+        location
+        date
+      }
     }
   }
-}
 `;
 
+// GRAPHQL QUERY TO GET ALL EVENTS ALONG WITH THEIR ASSOCIATED USERS
 export const GET_ALL_EVENTS = gql`
   query Events {
     events {
@@ -47,6 +55,7 @@ export const GET_ALL_EVENTS = gql`
   }
 `;
 
+// GRAPHQL QUERY TO GET A SINGLE EVENT BY EVENTID ALONG WITH ITS ASSOCIATED USER
 export const GET_ONE_EVENT = gql`
   query Query($eventId: ID!) {
     event(id: $eventId) {
