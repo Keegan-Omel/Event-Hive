@@ -36,7 +36,7 @@ module.exports = {
   // FUNCTION TO GENERATE AND SIGN A NEW JWT TOKEN BASED ON USER DATA
   signToken: function ({ username, email, _id }) {
     // CREATE A PAYLOAD CONTAINING USER INFORMATION TO BE ENCODED IN THE TOKEN
-    const payload = { username, email, _id };
+    const payload = { username, email, _id }; 
 
     // SIGN THE PAYLOAD WITH SECRET AND SET THE EXPIRATION TIME
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });

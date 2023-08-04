@@ -22,6 +22,11 @@ const typeDefs = gql`
     seatingFull: Boolean
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
     user(_id: ID!): User
