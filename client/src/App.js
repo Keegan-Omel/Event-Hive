@@ -1,10 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Home from './pages/Home';
-import Matchup from './pages/Matchup';
-import Vote from './pages/Vote';
-import NotFound from './pages/NotFound';
+// import Home from './components/Home';
+// import Matchup from './components/Matchup';
+// import Vote from './components/Vote';
+// import NotFound from './components/NotFound';
+
+
+import NavBar from '/components/NavBar';
+import Footer from '/components/Footer';
+import Home from '/components/Home';
+
+
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -14,6 +21,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+
+      <NavBar />
+
       <Router>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
           <Routes>
@@ -36,6 +46,9 @@ function App() {
           </Routes>
         </div>
       </Router>
+
+      <Footer />
+
     </ApolloProvider>
   );
 }
