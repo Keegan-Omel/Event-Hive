@@ -7,14 +7,30 @@ const Footer = () => {
     //JAVASCRPIT CODE: USESTATE/ USEEFFECT/ CONST/ PROPS
 
 
-  return (
-    <div className="card bg-white card-rounded w-50">
+    return (
+      // FOOTER SECTION
+      <footer>
+        <div className="row">
+          <div className="twelve columns">
+            <ul className="social-links">
+              {networks}
+            </ul>
 
-        <h1> Hi this is the FOOTER</h1>
+            <ul>
+              <li>Created by EventHive</li>
+            </ul>
 
-      
-    </div>
-  );
-};
+            <ul className="copyright">
+              <li>&copy; Template Inspired and Credited to Tim Baker - Copyright 2017 Tim Baker</li>
+              <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
+            </ul>
+
+          </div>
+          <div id="go-top"><a className="smoothscroll" title="Back to Top" href="#home"><i className="icon-up-open"></i></a></div>
+        </div>
+      </footer>
+    );
+  }
+
 
 export default Footer;
