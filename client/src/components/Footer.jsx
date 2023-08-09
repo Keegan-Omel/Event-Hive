@@ -1,36 +1,34 @@
-import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { QUERY_MATCHUPS } from '../utils/queries';
+import React from 'react'
+import { FaGithub, FaLinkedin, FaStackOverflow } from 'react-icons/fa';
+// import { useQuery } from '@apollo/client';
+// import { QUERY_MATCHUPS } from '../utils/queries';
 
 const Footer = () => {
+  return (
 
-    //JAVASCRPIT CODE: USESTATE/ USEEFFECT/ CONST/ PROPS
+    // each icon is linked to a corresponding profile! (target blank indicates opening the link on a new tab/page)
+    <footer className="portfolio-footer">
+      <div className="social-icons">
+        <a href="https://github.com/cynthiamory/EventHive.git" target="_blank">
+          <FaGithub />
+        </a>
+        <a href="https://www.linkedin.com" target="_blank">
+          <FaLinkedin />
+        </a>
+        <a href="https://stackoverflow.com" target="_blank">
+          <FaStackOverflow />
+        </a>
+      </div>
 
+      <div className='footer-bottom-text'>
+        <ul>
+          <li>Created by EventHive</li>
+        </ul>
+      </div>
+    </footer>
 
-    return (
-      // FOOTER SECTION
-      <footer>
-        <div className="row">
-          <div className="twelve columns">
-            <ul className="social-links">
-              {networks}
-            </ul>
-
-            <ul>
-              <li>Created by EventHive</li>
-            </ul>
-
-            <ul className="copyright">
-              <li>&copy; Template Inspired and Credited to Tim Baker - Copyright 2017 Tim Baker</li>
-              <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
-            </ul>
-
-          </div>
-          <div id="go-top"><a className="smoothscroll" title="Back to Top" href="#home"><i className="icon-up-open"></i></a></div>
-        </div>
-      </footer>
-    );
-  }
+  )
+};
 
 
 export default Footer;

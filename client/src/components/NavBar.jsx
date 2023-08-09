@@ -5,16 +5,13 @@ import { useQuery } from '@apollo/client';
 import { QUERY_MATCHUPS } from '../utils/queries';
 import { Component } from 'react';
 
-const NavBar = () => {
+// const NavBar = () => {
 
   //JAVASCRPIT CODE: USESTATE/ USEEFFECT/ CONST/ PROPS
 function NavBar (props) {
- return (function)
-}
-
-
-  return (
+ return (
     <header id="home">
+    <h1 className="responsive-headline">EventHive</h1>
       <nav id="nav-wrap">
         <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
         <a className="mobile-btn" href="#home" title="Hide navigation">Hide navigation</a>
@@ -28,14 +25,7 @@ function NavBar (props) {
       </nav>
       <div className="row banner">
         <div className="banner-text">
-          <h1 className="responsive-headline">I'm {name}.</h1>
-          <h3>A {city}, Canada based <span>{occupation}</span>. {description}.</h3>
-          <hr />
-          {/* <row className="social">
-               <ul>
-               {networks}
-               </ul>
-            </row> */}
+      
         </div>
       </div>
       <p className="scrolldown">
