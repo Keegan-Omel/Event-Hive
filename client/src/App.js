@@ -1,55 +1,34 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-// import Home from './components/Home';
-// import Matchup from './components/Matchup';
-// import Vote from './components/Vote';
-// import NotFound from './components/NotFound';
-
-
-import NavBar from '/components/NavBar';
-import Footer from '/components/Footer';
-import Home from '/components/Home';
-
-
-
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Profile from "./components/Profile";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Logout from "./components/Logout";
+import "./App.css";
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-
-      <NavBar />
-
+    <div className="APP">
       <Router>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
+        <NavBar />
+
+        <main>
           <Routes>
-            <Route 
-              path="/" 
-              element={<Home />}
-            />
-            <Route 
-              path="/matchup" 
-              element={<Matchup />}
-            />
-            <Route 
-              path="/matchup/:id" 
-              element={<Vote />}
-            />
-            <Route 
-              path="*"
-              element={<NotFound />}
-            />
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/logout" element={<Logout />} />
+            {/* Add more routes if needed */}
           </Routes>
-        </div>
+        </main>
+
+        <Footer />
       </Router>
-
-      <Footer />
-
-    </ApolloProvider>
+    </div>
   );
 }
 

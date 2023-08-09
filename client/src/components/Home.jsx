@@ -1,19 +1,22 @@
-import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { QUERY_MATCHUPS } from '../utils/queries';
+import React from 'react';
+import EventList from './EventList';
 
-const Home = () => {
+// fix this later
+import SearchResultContainer from './SearchBar'
 
-    //JAVASCRPIT CODE: USESTATE/ USEEFFECT/ CONST/ PROPS
-
-
+function Home() {
   return (
-    <div className="card bg-white card-rounded w-50">
+    <div>
+      <h1>Find Events</h1>
 
-       <div> THIS IS OUR HOME</div>
-      
+      {/* SEARCH BAR COMPONENT: FIX */}
+      {/* <SearchResultContainer /> */}
+
+
+      <EventList />
     </div>
   );
-};
+}
 
 export default Home;
+
