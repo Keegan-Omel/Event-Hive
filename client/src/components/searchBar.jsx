@@ -1,33 +1,37 @@
+// FIX LATER
+
 //added from activities (mel) 
 
-import { useState, useEffect } from 'react';
-import ResultList from './ResultList';
+// uncomment:
 
-// Import our search method
-import search from '../utils/API';
+// import { useState, useEffect } from 'react';
+// import ResultList from './ResultList';
 
-const SearchResultContainer = () => {
-  // Declare a new state variable, "results"
-  const [results, setResults] = useState([]);
+// // Import our search method
+// import search from '../utils/API';
 
-  // Method to get search results and set state
-  const searchGiphy = async (query) => {
-    const response = await search(query);
-    setResults(response.data.data);
-  };
+// const SearchResultContainer = () => {
+//   // Declare a new state variable, "results"
+//   const [results, setResults] = useState([]);
 
-  // We want to run this method when the component first loads so that we have images of kittens to display
-  // The second argument is the dependency array. This means that this method will only run when the component first loads
-  useEffect(() => {
-    searchGiphy('kittens');
-  }, []);
+//   // Method to get search results and set state
+//   const searchGiphy = async (query) => {
+//     const response = await search(query);
+//     setResults(response.data.data);
+//   };
 
-  return (
-    <div>
-      {/* Pass our results to the ResultsList component to map over */}
-      <ResultList results={results} />
-    </div>
-  );
-};
+//   // We want to run this method when the component first loads so that we have images of kittens to display
+//   // The second argument is the dependency array. This means that this method will only run when the component first loads
+//   useEffect(() => {
+//     searchGiphy('kittens');
+//   }, []);
 
-export default SearchResultContainer;
+//   return (
+//     <div>
+//       {/* Pass our results to the ResultsList component to map over */}
+//       <ResultList results={results} />
+//     </div>
+//   );
+// };
+
+// export default SearchResultContainer;
