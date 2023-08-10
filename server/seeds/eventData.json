@@ -5,7 +5,7 @@
     "user": "user1",
     "cost": 45,
     "location": "ABC Street",
-    "date": "2023-08-10T12:00:00Z"
+    "date": "2024-08-10T12:00:00Z"
   },
   {
     "title": "Event 2",
@@ -13,7 +13,7 @@
     "user": "user2",
     "cost": 30,
     "location": "XYZ Avenue",
-    "date": "2023-08-11T15:00:00Z"
+    "date": "2024-08-11T15:00:00Z"
   },
   {
     "title": "Event 3",
@@ -21,7 +21,7 @@
     "user": "user3",
     "cost": 20,
     "location": "123 Park",
-    "date": "2023-08-12T18:00:00Z"
+    "date": "2024-08-12T18:00:00Z"
   },
   {
     "title": "Event 4",
@@ -29,7 +29,7 @@
     "user": "user1",
     "cost": 10,
     "location": "456 Plaza",
-    "date": "2023-08-13T09:00:00Z"
+    "date": "2024-08-13T09:00:00Z"
   },
   {
     "title": "Event 5",
@@ -37,7 +37,7 @@
     "user": "user2",
     "cost": 15,
     "location": "789 Mall",
-    "date": "2023-08-14T14:00:00Z"
+    "date": "2024-08-14T14:00:00Z"
   },
   {
     "title": "Event 6",
@@ -45,7 +45,7 @@
     "user": "user3",
     "cost": 25,
     "location": "Park Street",
-    "date": "2023-08-15T11:00:00Z"
+    "date": "2024-08-15T11:00:00Z"
   },
   {
     "title": "Event 7",
@@ -53,6 +53,6 @@
     "user": "user1",
     "cost": 50,
     "location": "Main Road",
-    "date": "2023-08-16T17:00:00Z"
+    "date": "2024-08-16T17:00:00Z"
   }
 ]

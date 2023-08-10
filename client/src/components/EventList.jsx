@@ -12,6 +12,9 @@ function EventList() {
 
   const events = data.events;
 
+  // comment out the console.log(data) line once you know the query is working
+  // console.log(data);
+
   return (
     <div>
       {events.map(event => (
