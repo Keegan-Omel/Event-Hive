@@ -21,9 +21,69 @@
   color: #f39c12;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-  }
+/* NavBar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+}
+
+/* NavBar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  font-size: 12px;
+  cursor: pointer;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.dropdown-content div,
+.dropdown-content button {
+  display: block;
+  width: 100px;
+  padding: 10px;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content a {
+  color: #333;
+  text-decoration: none;
+}
+
+.signout-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333;
 }
