@@ -17,7 +17,7 @@ export const ADD_USER = gql`
 
 // MUTATION TO PERFORM USER LOGIN AND RETURN A JWT UPON SUCCESS
 export const LOGIN_USER = gql`
-  mutation LOGIN_USER($email: String!, $password: String!) {
+  mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token 
       user {
