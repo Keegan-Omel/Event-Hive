@@ -46,7 +46,7 @@ const Login = () => {
       }
 
       // EXTRACT TOKEN FROM RESPONSE AND LOGIN USER
-      const { token } = await response.data.login;
+      const { token } = await response.data.loginUser;
       Auth.login(token);
     } catch (err) {
       console.error(err);

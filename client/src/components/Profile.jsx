@@ -6,7 +6,7 @@ function Profile() {
   // LATER ON THIS SHOULD BE TAKEN FROM THE LOGIN PAGE ONCE THAT IS DONE
   // This is an example of user1 ID: "64d2e14f11bfea41295d9796" --> used for example purposes only. 
   // Again, the correct id will later on be extracted from the login data, etc.
-  const _id = '64d2e14f11bfea41295d9796';
+  const _id = '64dab5a419281cb04961176d';
 
   // Use the GET_ONE_USER query with variables to fetch the user's data
   const { loading, error, data } = useQuery(GET_ONE_USER, {
