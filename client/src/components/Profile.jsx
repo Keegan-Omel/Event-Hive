@@ -4,11 +4,8 @@ import { GET_ONE_USER } from '../utils/queries.js';
 import Auth from '../utils/auth';
 
 function Profile() {
-  // LATER ON THIS SHOULD BE TAKEN FROM THE LOGIN PAGE ONCE THAT IS DONE
-  // This is an example of user1 ID: "64dab5a419281cb04961176d" --> used for example purposes only. 
-  // Again, the correct id will later on be extracted from the login data, etc.
-  console.log(Auth.getProfile())
-  const _id = Auth.getProfile() 
+  // Get the user's _id from the Auth.loggedIn() method
+  const _id = Auth.getProfile().data._id
 
   // Use the GET_ONE_USER query with variables to fetch the user's data
   const { loading, error, data } = useQuery(GET_ONE_USER, {
