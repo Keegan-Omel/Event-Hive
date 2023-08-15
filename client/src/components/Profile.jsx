@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ONE_USER } from '../utils/queries.js'; 
 import Auth from '../utils/auth';
+import '../assets/css/Profile.css'
 
 function Profile() {
   // Get the user's _id from the Auth.loggedIn() method
@@ -21,10 +22,10 @@ function Profile() {
   console.log(data);
 
   return (
-    <div>
-      <h1>User Profile</h1>
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
+    <div class='profilecard'>
+      <h1 class ='profileheader'>User Profile</h1>
+      <p class='profileUser'>Username: {user.username}</p>
+      <p class='profileEmail'>Email: {user.email}</p>
       <h2>Events:</h2>
       <ul>
         {user.events.map(event => (
