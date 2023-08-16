@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_ONE_USER } from '../utils/queries.js'; 
+import { GET_ONE_USER } from '../utils/queries.js';
 import Auth from '../utils/auth';
 import '../assets/css/Profile.css'
 
@@ -22,25 +22,57 @@ function Profile() {
   console.log(data);
 
   return (
+    <div>
+  <div class="background"> 
+    <img src="homepage-2.png" class="banner-img" alt="Card background"></img>
+  
+    </div>  
+    
     <div class='profilecard'>
-      <h1 class ='profileheader'>User Profile</h1>
-      <p class='profileUser'>Username: {user.username}</p>
-      <p class='profileEmail'>Email: {user.email}</p>
-      <h2>Events:</h2>
-      <ul>
-        {user.events.map(event => (
-          <li key={event._id}>
-            <p>Title: {event.title}</p>
-            <p>Description: {event.description}</p>
+      
+        <h1 class='profileheader'>User Profile</h1>
+        <p class='profileUser'>Username: {user.username}</p>
+        <p class='profileEmail'>Email: {user.email}</p>
+        <ul>
+          {user.events.map(event => (
+            <li key={event._id}>
+              <p>Title: {event.title}</p>
+              <p>Description: {event.description}</p>
 
-            {/* This is a comment indicating that more event details can be added here */}
-            {/* For example, you can include the event date, location, and other relevant info */}
-            {/* You can also add links to each event for further interaction */}
-          </li>
-        ))}
-      </ul>
+              {/* This is a comment indicating that more event details can be added here */}
+              {/* For example, you can include the event date, location, and other relevant info */}
+              {/* You can also add links to each event for further interaction */}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class='profile-event-header'>Events:</h2>
+      </div>
+
     </div>
+
   );
 }
 
 export default Profile;
+
+// <div class='profilecard'>
+// <h1 class ='profileheader'>User Profile</h1>
+// <p class='profileUser'>Username: {user.username}</p>
+// <p class='profileEmail'>Email: {user.email}</p>
+// <h2>Events:</h2>
+// <ul>
+//   {user.events.map(event => (
+//     <li key={event._id}>
+//       <p>Title: {event.title}</p>
+//       <p>Description: {event.description}</p>
+
+//       {/* This is a comment indicating that more event details can be added here */}
+//       {/* For example, you can include the event date, location, and other relevant info */}
+//       {/* You can also add links to each event for further interaction */}
+//     </li>
+//   ))}
+// </ul>
+// </div>

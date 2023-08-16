@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Exo+2:wght@300&family=Kanit:wght@300&family=Preahvihear&family=Roboto+Condensed&family=Shadows+Into+Light&display=swap');
+
 .profileUser, 
 .profileEmail {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -17,5 +19,27 @@
 .profileheader {
     font-size: 30pt;
     text-align: center;
+    font-family: 'Exo 2', sans-serif;
+    margin-bottom: 25pt;
+    padding:0;
     
 }
+
+.profile-event-header {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 30pt;
+    padding: 15pt;
+    margin-top: 40pt;
+}
+
+.background {
+    display: block;
+      background-repeat: no-repeat;
+      background-size: cover;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      height: auto;
+      background-position: center;
+      background-image: url(../images/homepage-2.png);
+  }
