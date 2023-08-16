@@ -1,5 +1,5 @@
 import React from 'react';
-import EventList from './EventList';
+import EventList from '../components/EventList';
 import '../assets/css/Home.css'
 
 // fix this later
