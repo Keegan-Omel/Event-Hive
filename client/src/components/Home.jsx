@@ -7,7 +7,9 @@ import SearchResultContainer from './SearchBar'
 
 function Home() {
   return (
-    <div>
+    <div class="home-container"> 
+ 
+  
       <h1>FIND EVENTS</h1>
 
       {/* SEARCH BAR COMPONENT: FIX */}
