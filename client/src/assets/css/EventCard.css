@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Exo+2:wght@300&family=Kanit:wght@300&family=Preahvihear&family=Roboto+Condensed&family=Shadows+Into+Light&display=swap');
+
+
 .eventcard {
     border: 1.2px solid #000101;
     border-radius: 3.3px;
@@ -9,6 +12,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 10px;
+    font-family: 'Exo 2', sans-serif;
     
 }
 
