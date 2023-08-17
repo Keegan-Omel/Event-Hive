@@ -15,10 +15,11 @@
   color: white;
   font-weight: bold;
   transition: color 0.3s ease;
+  margin-left: 20px;
 }
 
 .navbar a:hover {
-  color: #f39c12;
+  color: #8e7ec0;
 }
 
 /* NavBar.css */
@@ -87,3 +88,25 @@
   cursor: pointer;
   color: #333;
 }
+
+
+/*start ofSearchBar*/
+
+.search-bar input[type="text"] {
+  padding: 5px;
+  border: #3012f3;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  border:#3012f3;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*End of SearchBar*/
+
