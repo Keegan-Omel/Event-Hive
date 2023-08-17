@@ -15,7 +15,7 @@ function Profile() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-
+// still working on background image and the code//
   // comment out the console.log(data) line once you know the query is working
   const user = data.user;
 
@@ -23,11 +23,12 @@ function Profile() {
 
   return (
     <div>
-  <div class="background"> 
-    <img src="homepage-2.png" class="banner-img" alt="Card background"></img>
-  
+  <div class="banner-img"> 
+    
     </div>  
     
+  
+
     <div class='profilecard'>
       
         <h1 class='profileheader'>User Profile</h1>

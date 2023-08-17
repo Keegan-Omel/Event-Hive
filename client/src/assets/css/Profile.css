@@ -32,7 +32,7 @@
     margin-top: 40pt;
 }
 
-.background {
+/* .background {
     display: block;
       background-repeat: no-repeat;
       background-size: cover;
@@ -42,4 +42,12 @@
       height: auto;
       background-position: center;
       background-image: url(../images/homepage-2.png);
-  }
+  } */
+.banner-img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50vh;
+    margin: 0;
+    padding: 0;
+   background-image: url(../images/homepage-2.png);
+}
