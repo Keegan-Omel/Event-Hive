@@ -1,4 +1,5 @@
 import React from 'react';
+import '../assets/css/EventCard.css';
 
 function EventCard({ event }) {
   const attendees = event.attendees || []; // Initialize attendees array if undefined
@@ -35,3 +36,4 @@ function EventCard({ event }) {
 }
 
 export default EventCard;
+

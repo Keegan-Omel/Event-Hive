@@ -1,24 +1,18 @@
 /* NavBar.css */
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Exo+2:wght@300&family=Kanit:wght@300&family=Preahvihear&family=Roboto+Condensed&family=Shadows+Into+Light&display=swap');
 
-.navbar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #333;
-  color: white;
-  padding: 1rem;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
+
 
 .navbar a {
   text-decoration: none;
   color: white;
   font-weight: bold;
   transition: color 0.3s ease;
+  margin-left: 20px;
 }
 
 .navbar a:hover {
-  color: #f39c12;
+  color: #8f9b26;
 }
 
 /* NavBar.css */
@@ -26,43 +20,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
+  background-color: #032199;
   padding: 10px 20px;
   color: white;
-}
-
-/* NavBar.css */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
-  color: white;
+  font-family: 'Exo 2', sans-serif;
 }
 
 .dropdown {
   position: relative;
   display: inline-block;
+  
 }
 
 .dropdown-button {
   font-size: 12px;
   cursor: pointer;
-  background-color: #333;
+  background-color: #17013b;
   padding: 10px 20px;
   color: white;
 }
 
 .dropdown-content {
   position: absolute;
+  font-size: small;
   top: 100%;
   right: 0;
-  background-color: #fff;
+  background-color: #17013b;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  
 }
 
 .dropdown-content div,
@@ -77,8 +65,9 @@
 }
 
 .dropdown-content a {
-  color: #333;
+  color: #ffffff;
   text-decoration: none;
+  size: 12;
 }
 
 .signout-button {
@@ -87,3 +76,26 @@
   cursor: pointer;
   color: #333;
 }
+
+
+/*start ofSearchBar*/
+
+.search-bar input[type="text"] {
+  padding: 5px;
+  border: #3012f3;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  border:#3012f3;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*End of SearchBar*/
+

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_EVENTS } from '../utils/queries.js'; 
-
-import EventCard from './EventCard';
+import EventCard from '../components/EventCard.jsx';
+import '../assets/css/EventList.css'; // Import CSS for grid layout
 
 function EventList() {
   const { loading, error, data } = useQuery(GET_ALL_EVENTS);
@@ -12,11 +12,8 @@ function EventList() {
 
   const events = data.events;
 
-  // comment out the console.log(data) line once you know the query is working
-  // console.log(data);
-
   return (
-    <div>
+    <div className="event-list-grid">
       {events.map(event => (
         <EventCard key={event._id} event={event} />
       ))}
@@ -25,4 +22,3 @@ function EventList() {
 }
 
 export default EventList;
-

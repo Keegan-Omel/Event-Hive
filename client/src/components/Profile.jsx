@@ -4,6 +4,7 @@ import { GET_ONE_USER } from '../utils/queries.js';
 import { DELETE_EVENT } from '../utils/mutations.js';
 import Auth from '../utils/auth';
 import EventForm from './EventForm.jsx';
+import '../assets/css/Profile.css'
 
 function Profile() {
   const _id = Auth.getProfile().data._id;
@@ -35,33 +36,57 @@ function Profile() {
   const { user } = data;
 
   return (
-    <div>
-      <h1>User Profile</h1>
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
-      <h2>Events:</h2>
-      <h5>
-        {user.events.map((event) => (
-          <p key={event._id}>
-            <p>Title: {event.title}</p>
-            <p>Description: {event.description}</p>
-            <p>Date: {new Date(parseInt(event.date)).toLocaleDateString()}</p>
-            <p>Cost: {event.cost}</p>
-            <p>Location: {event.location}</p>
+    <div>  
+      <div class="banner-img"> </div> 
+     
+      <div class='profilecard'>
+        <h1 class='profileheader' >User Profile</h1>
+        <p class='profileUser'>Username: {user.username}</p>
+        <p class='profileEmail' >Email: {user.email}</p>
+        <h2 class='profile-event-header'>Events:</h2>
+        <h5>
+          {user.events.map((event) => (
+            <p key={event._id}>
+              <p>Title: {event.title}</p>
+              <p>Description: {event.description}</p>
+              <p>Date: {new Date(parseInt(event.date)).toLocaleDateString()}</p>
+              <p>Cost: {event.cost}</p>
+              <p>Location: {event.location}</p>
 
-            <button value={event._id} onClick={(e) => handleDeleteEvent(e.target.value)}>Delete Event</button>
-            {/* Add more event details here if needed. Use the EventCard as a reference for additional information */}
-          </p>
-        ))}
-      </h5>
+              <button value={event._id} onClick={(e) => handleDeleteEvent(e.target.value)}>Delete Event</button>
+              {/* Add more event details here if needed. Use the EventCard as a reference for additional information */}
+            </p>
+          ))}
+        </h5>
 
-      <h3>Add Event</h3>
+        <h3>Add Event</h3>
 
-      <EventForm showForm={showForm} setShowForm={setShowForm} />
+        <EventForm showForm={showForm} setShowForm={setShowForm} />
+      </div>
 
-      {/* FIND A WAY TO RERENDER WHEN DELETE OR ADD! So that they show up! */}
+      
     </div>
+
   );
 }
 
 export default Profile;
+
+// <div class='profilecard'>
+// <h1 class ='profileheader'>User Profile</h1>
+// <p class='profileUser'>Username: {user.username}</p>
+// <p class='profileEmail'>Email: {user.email}</p>
+// <h2>Events:</h2>
+// <ul>
+//   {user.events.map(event => (
+//     <li key={event._id}>
+//       <p>Title: {event.title}</p>
+//       <p>Description: {event.description}</p>
+
+//       {/* This is a comment indicating that more event details can be added here */}
+//       {/* For example, you can include the event date, location, and other relevant info */}
+//       {/* You can also add links to each event for further interaction */}
+//     </li>
+//   ))}
+// </ul>
+// </div>

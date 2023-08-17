@@ -47,13 +47,7 @@ The application boasts a polished and responsive user interface, guaranteeing an
 
 ## Preview Images
 - ## Preview - Home
-![Preview Image](./)
-
-- ## Preview - About
-![Preview Image](./)
-
-- ## Preview - Contact & Footer
-![Preview Image](./)
+![Preview Image](./client/src/assets/images/Web-Preview-2.png)
 
 ## Link To Live URL
 
@@ -92,7 +86,7 @@ Assignment was built with:
 ![VS Code](https://img.shields.io/badge/visualstudiocode-black?style=for-the-badge&logo=visualstudiocode&logoColor=#007ACC)
 
 ## Credits
-- EventHive: Cynthia, Keegan, Chris, Muhammad & Melanie - Full Stack Developer Students.
+- EventHive: Cynthia, Keegan, Muhammad & Melanie - Full Stack Developer Students.
 - Institution: The University Of Toronto
 - Course: Bootcamp Full Stack Development
 - Instructor: Ali Masqood 
