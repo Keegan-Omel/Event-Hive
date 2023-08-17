@@ -8,7 +8,7 @@ function EventCard({ event }) {
     <div>
       <h2>Title: {event.title}</h2>
       <p>Description: {event.description}</p>
-      <p>Date: {event.date}</p>
+      <p>Date: {new Date(parseInt(event.date)).toLocaleDateString()}</p>
       <p>Cost: {event.cost}</p>
       <p>Location: {event.location}</p>
       <p>Creator/Host: {event.user.username}</p>

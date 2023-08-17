@@ -27,7 +27,7 @@ function NavBar() {
       
       <div className="dropdown">
         <button className="dropdown-button" onClick={() => setShowDropdown(!showDropdown)}>
-          {isAuthenticated ? 'Sign Out' : 'Sign Up / Sign In'}
+          {isAuthenticated ? 'Sign Out' : 'Sign Up / Log-In'}
         </button>
         {showDropdown && (
           <div className="dropdown-content">
@@ -37,7 +37,7 @@ function NavBar() {
                   <Link to="/signup">Sign Up</Link>
                 </div>
                 <div>
-                  <Link to="/login">Sign In</Link>
+                  <Link to="/login">Log-In</Link>
                 </div>
               </>
             )}

@@ -71,22 +71,3 @@ function Profile() {
 }
 
 export default Profile;
-
-// <div class='profilecard'>
-// <h1 class ='profileheader'>User Profile</h1>
-// <p class='profileUser'>Username: {user.username}</p>
-// <p class='profileEmail'>Email: {user.email}</p>
-// <h2>Events:</h2>
-// <ul>
-//   {user.events.map(event => (
-//     <li key={event._id}>
-//       <p>Title: {event.title}</p>
-//       <p>Description: {event.description}</p>
-
-//       {/* This is a comment indicating that more event details can be added here */}
-//       {/* For example, you can include the event date, location, and other relevant info */}
-//       {/* You can also add links to each event for further interaction */}
-//     </li>
-//   ))}
-// </ul>
-// </div>

@@ -7,6 +7,7 @@ import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Logout from "./components/Logout";
+import Auth from './utils/auth';
 import "./App.css";
 
 function App() {
@@ -18,11 +19,15 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
+
+            <Route
+              path="/profile"
+              element={Auth.loggedIn() ? <Profile /> : <Login />}
+            />
+
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/logout" element={<Logout />} />
-            {/* Add more routes if needed */}
           </Routes>
         </main>
 
