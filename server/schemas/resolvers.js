@@ -1,4 +1,3 @@
-// Purpose: to define the query and mutation functionality to work with the Mongoose models.
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Event } = require("../models");
 const { generateToken } = require("../utils/auth");
@@ -8,68 +7,84 @@ const resolvers = {
   Query: {
     users: async () => {
       try {
-        return await User.find({});
+        const users = await User.find({}).populate("events");
+        console.log("Populated users' events:", users);
+        return users;
       } catch (error) {
         throw new Error("Failed to fetch users");
       }
     },
     user: async (parent, { _id }) => {
       try {
-        return await User.findById(_id);
+        const user = await User.findById(_id).populate("events");
+        console.log("Populated users' events:", user);
+        return user;
       } catch (error) {
         throw new Error("User not found");
       }
     },
     events: async () => {
       try {
-        return await Event.find({});
+        return await Event.find({}).populate("user").populate("attendees");
       } catch (error) {
         throw new Error("Failed to fetch events");
       }
     },
     event: async (parent, { _id }) => {
       try {
-        return await Event.findById(_id);
+        return await Event.findById(_id).populate("user").populate("attendees");
       } catch (error) {
         throw new Error("Event not found");
       }
     },
   },
+  // me: async (parent, args, context) => {
+  //   if (context.user) {
+  //     return User.findOne({ _id: context.user._id }).populate('events');
+  //   }
+  //   throw new AuthenticationError('You need to be logged in!');
+  // },
   Mutation: {
     createUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
-      const token = generateToken(user);
-
-      return { token, user };
+      try {
+        const user = await User.create({ username, email, password });
+        const token = generateToken(user);
+        return { token, user };
+      } catch (error) {
+        throw new Error("Failed to create user");
+      }
     },
     loginUser: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      try {
+        const user = await User.findOne({ email });
 
-      if (!user) {
-        throw new AuthenticationError("No user found with this email address");
+        if (!user) {
+          throw new AuthenticationError(
+            "No user found with this email address"
+          );
+        }
+
+        const correctPw = await user.checkPassword(password);
+
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+
+        const token = generateToken(user);
+
+        return { token, user };
+      } catch (error) {
+        throw new Error("Failed to login");
       }
-
-      const correctPw = await user.checkPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
-
-      const token = generateToken(user);
-
-      return { token, user };
     },
     updateUser: async (_, { _id, username, email }, context) => {
       try {
-        // Apply authentication middleware
         authMiddleware(context);
 
-        // If the user is not authenticated, throw an AuthenticationError
         if (!context.user) {
           throw new AuthenticationError("User not authenticated");
         }
 
-        // Update the user (if authenticated)
         const updatedUser = await User.findByIdAndUpdate(
           _id,
           { username, email },
@@ -84,56 +99,69 @@ const resolvers = {
 
     removeUser: async (_, { _id }, context) => {
       try {
-        // Apply authentication middleware
         authMiddleware(context);
 
-        // If the user is not authenticated, throw an AuthenticationError
         if (!context.user) {
           throw new AuthenticationError("User not authenticated");
         }
 
-        // Remove the user (if authenticated)
         const removedUser = await User.findByIdAndDelete(_id);
         return removedUser;
       } catch (error) {
         throw new Error("Failed to remove user");
       }
     },
-    createEvent: async (_, args, context) => {
-      try {
-        // Apply authentication middleware
-        authMiddleware(context);
-
-        // If the user is not authenticated, throw an AuthenticationError
-        if (!context.user) {
-          throw new AuthenticationError("User not authenticated");
-        }
-
-        // Create the event (if authenticated)
-        const event = await Event.create(args);
-        return event;
-      } catch (error) {
-        throw new Error("Failed to create event");
-      }
-    },
-    updateEvent: async (
+    createEvent: async (
       _,
-      { _id, title, description, date, location, cost, seating },
+      { title, description, date, location, cost, seating },
       context
     ) => {
       try {
-        // Apply authentication middleware
+        if (!context.req.user) {
+          console.error("User not authenticated");
+          throw new AuthenticationError("You need to be logged in!");
+        }
+
+        const { _id } = context.req.user;
+        console.log("Creating event for user:", _id);
+
+        const event = await Event.create({
+          title,
+          description,
+          date,
+          location,
+          cost,
+          seating, 
+          user: _id,
+        });
+        
+        // SAVES CREATED EVENT TO USER  
+        await User.findByIdAndUpdate(_id, {$addToSet: {events: event._id}})
+
+        console.log("Event created:", event);
+
+        return event;
+      } catch (error) {
+        console.error("Error creating event:", error);
+        throw new Error("Failed to create event");
+      }
+    },
+
+    updateEvent: async (
+      _,
+      { _id, title, description, date, location, cost, seating }, 
+      context
+    ) => {
+      try {
         authMiddleware(context);
 
-        // If the user is not authenticated, throw an AuthenticationError
         if (!context.user) {
           throw new AuthenticationError("User not authenticated");
         }
 
-        // Update the event (if authenticated)
         const updatedEvent = await Event.findByIdAndUpdate(
           _id,
-          { title, description, date, location, cost, seating },
+          { title, description, date, location, cost, seating }, 
           { new: true }
         );
         return updatedEvent;
@@ -143,18 +171,19 @@ const resolvers = {
     },
     removeEvent: async (_, { _id }, context) => {
       try {
-        // Apply authentication middleware
-        authMiddleware(context);
+        //authMiddleware(context);
 
-        // If the user is not authenticated, throw an AuthenticationError
-        if (!context.user) {
+        if (!context.req.user) {
           throw new AuthenticationError("User not authenticated");
         }
 
-        // Remove the event (if authenticated)
         const removedEvent = await Event.findByIdAndDelete(_id);
+
+        // SAVES REMOVED EVENT TO USER  
+        await User.findByIdAndUpdate(context.req.user._id, {$pull: {events: _id}})
         return removedEvent;
       } catch (error) {
+        console.log(error)
         throw new Error("Failed to remove event");
       }
     },
@@ -185,4 +214,4 @@ const resolvers = {
 
 module.exports = resolvers;
 
-// CheckPoint!!
+// CheckPoint!!!

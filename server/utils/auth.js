@@ -1,35 +1,35 @@
-// IMPORT THE JSONWEBTOKEN PACKAGE FOR JWT HANDLING
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-// SET TOKEN SECRET AND EXPIRATION DATE FOR JWT
-const secret = 'mysecretsshhhhh'; //  SHOULD BE STRONGER IN PRODUCTION
-const expiration = '2h'; // SET THE EXPIRATION TIME FOR THE TOKEN 
+const secret = "mysecretsshhhhh";
+const expiration = "2h";
 
-module.exports = { 
-  authMiddleware: function ({ req }) {
-    let token = req.body.token || req.query.token || req.headers.authorization;
+const authMiddleware = (req, res, next) => {
+  let token = req.body.token || req.query.token || req.headers.authorization;
 
-    if (req.headers.authorization) {
-      token = token.split(' ').pop().trim();
-    }
+  if (req.headers.authorization) {
+    token = token.split(" ").pop().trim();
+  }
 
-    if (!token) {
-      return req;
-    }
+  if (!token) {
+    return next(); // Call next to continue middleware chain
+  }
 
-    try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
-    } catch {
-      console.log('Invalid token');
-    }
-
-    return req;
-  },
-  generateToken: function ({ email, username, _id }) {
-    const payload = { email, username, _id };
-    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-  },
+  try {
+    const { data } = jwt.verify(token, secret, { maxAge: expiration });
+    req.user = data;
+    next(); // Call next to continue middleware chain
+  } catch (error) {
+    console.log("Invalid token:", error.message);
+    next(); // Call next to continue middleware chain
+  }
 };
+
+
+const generateToken = ({ email, username, _id }) => {
+  const payload = { email, username, _id };
+  return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+};
+
+module.exports = { authMiddleware, generateToken };
 
 // checkPoint!!!!

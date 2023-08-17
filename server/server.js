@@ -1,10 +1,9 @@
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
-const authMiddleware = require("./utils/auth");
-
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
+const { authMiddleware } = require("./utils/auth");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,18 +12,20 @@ const startApolloServer = async () => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: authMiddleware,
+    context: ({ req }) => {
+      // Call authMiddleware to attach user data to req
+      authMiddleware(req, null, () => {});
+
+      // Return the context object with the updated req
+      return { req };
+    },
   });
 
   await server.start();
   server.applyMiddleware({ app });
 
-  // Connect to the database
-  db.once("open", () => {
-    console.log("Connected to the database");
-  });
-
   // Middleware for handling form data and JSON data
+  // Make sure this middleware setup comes after Apollo Server middleware
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
@@ -36,6 +37,11 @@ const startApolloServer = async () => {
     });
   }
 
+  // Connect to the database
+  db.once("open", () => {
+    console.log("Connected to the database");
+  });
+
   // Start the server
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);
@@ -44,3 +50,5 @@ const startApolloServer = async () => {
 };
 
 startApolloServer();
+
+//Checkpoint!!

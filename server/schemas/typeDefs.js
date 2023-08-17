@@ -6,20 +6,20 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    events: [Event]
+    events: [Event] # List of events associated with this user
   }
 
   type Event {
     _id: ID!
     title: String!
     description: String!
-    user: User
+    user: User # The user who created the event
     date: String!
     cost: Int
     seating: Int
     location: String!
-    attendees: [User]
-    seatingFull: Boolean
+    attendees: [User] # List of users attending the event
+    seatingFull: Boolean # Indicates if event seating is full
   }
 
   type Auth {
@@ -28,31 +28,25 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
-    user(_id: ID!): User
-    events: [Event]
-    event(_id: ID!): Event
+    users: [User] # Get a list of all users
+    user(_id: ID!): User # Get a user by their ID
+    events: [Event] # Get a list of all events
+    event(_id: ID!): Event # Get an event by its ID
   }
 
   type Mutation {
-    # Create a new user
+    # User-related mutations
     createUser(username: String!, email: String!, password: String!): Auth
-
-    # Login a user
     loginUser(email: String!, password: String!): Auth
-
-    # Update an existing user by ID
     updateUser(
       _id: ID!
       username: String
       email: String
       password: String
     ): User
-
-    # Remove a user by ID
     removeUser(_id: ID!): User
 
-    # Create a new event
+    # Event-related mutations
     createEvent(
       title: String!
       description: String!
@@ -61,8 +55,6 @@ const typeDefs = gql`
       cost: Int
       seating: Int
     ): Event
-
-    # Update an existing event by ID
     updateEvent(
       _id: ID!
       title: String
@@ -72,8 +64,6 @@ const typeDefs = gql`
       cost: Int
       seating: Int
     ): Event
-
-    # Remove an event by ID
     removeEvent(_id: ID!): Event
   }
 `;

@@ -1,8 +1,7 @@
 import { gql } from "@apollo/client";
 
-// Query to get all users along with their events
 export const GET_ALL_USERS = gql`
-  query Users {
+  query {
     users {
       _id
       username
@@ -10,17 +9,17 @@ export const GET_ALL_USERS = gql`
       events {
         _id
         title
-        cost
         description
+        cost
         location
+        date
       }
     }
   }
 `;
 
-// Query to get a single user by _id along with their events
 export const GET_ONE_USER = gql`
-  query User($_id: ID!) {
+  query GetUser($_id: ID!) {
     user(_id: $_id) {
       _id
       username
@@ -37,9 +36,8 @@ export const GET_ONE_USER = gql`
   }
 `;
 
-// Query to get all events along with their associated users
 export const GET_ALL_EVENTS = gql`
-  query Events {
+  query {
     events {
       _id
       title
@@ -50,25 +48,36 @@ export const GET_ALL_EVENTS = gql`
       user {
         _id
         username
+        email
+      }
+      attendees {
+        _id
+        username
+        email
       }
     }
   }
 `;
 
-// Query to get a single event by _id along with its associated user
 export const GET_ONE_EVENT = gql`
-  query Query($_id: ID!) {
+  query GetEvent($_id: ID!) {
     event(_id: $_id) {
       _id
       title
       description
       cost
       location
+      date
       user {
         _id
         username
+        email
       }
-      date
+      attendees {
+        _id
+        username
+        email
+      }
     }
   }
 `;

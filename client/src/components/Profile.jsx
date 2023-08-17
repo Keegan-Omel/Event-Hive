@@ -1,24 +1,38 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_ONE_USER } from '../utils/queries.js'; 
+import React, { useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { GET_ONE_USER } from '../utils/queries.js';
+import { DELETE_EVENT } from '../utils/mutations.js';
 import Auth from '../utils/auth';
+import EventForm from './EventForm.jsx';
 
 function Profile() {
-  // Get the user's _id from the Auth.loggedIn() method
-  const _id = Auth.getProfile().data._id
+  const _id = Auth.getProfile().data._id;
+
+  const [showForm, setShowForm] = useState(false);
+
+  const [deleteEvent] = useMutation(DELETE_EVENT);
+
+  async function handleDeleteEvent(_id) {
+    const { data } = await deleteEvent({
+      variables: { _id },
+    });
+
+    // Manually refetch the user data after deleting the event
+    await refetch();
+
+    console.log(data);
+  }
 
   // Use the GET_ONE_USER query with variables to fetch the user's data
-  const { loading, error, data } = useQuery(GET_ONE_USER, {
+  const { loading, error, data, refetch } = useQuery(GET_ONE_USER, {
     variables: { _id },
   });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  // comment out the console.log(data) line once you know the query is working
-  const user = data.user;
-
-  console.log(data);
+  // Destructure the user object from the data
+  const { user } = data;
 
   return (
     <div>
@@ -26,18 +40,26 @@ function Profile() {
       <p>Username: {user.username}</p>
       <p>Email: {user.email}</p>
       <h2>Events:</h2>
-      <ul>
-        {user.events.map(event => (
-          <li key={event._id}>
+      <h5>
+        {user.events.map((event) => (
+          <p key={event._id}>
             <p>Title: {event.title}</p>
             <p>Description: {event.description}</p>
+            <p>Date: {new Date(parseInt(event.date)).toLocaleDateString()}</p>
+            <p>Cost: {event.cost}</p>
+            <p>Location: {event.location}</p>
 
-            {/* This is a comment indicating that more event details can be added here */}
-            {/* For example, you can include the event date, location, and other relevant info */}
-            {/* You can also add links to each event for further interaction */}
-          </li>
+            <button value={event._id} onClick={(e) => handleDeleteEvent(e.target.value)}>Delete Event</button>
+            {/* Add more event details here if needed. Use the EventCard as a reference for additional information */}
+          </p>
         ))}
-      </ul>
+      </h5>
+
+      <h3>Add Event</h3>
+
+      <EventForm showForm={showForm} setShowForm={setShowForm} />
+
+      {/* FIND A WAY TO RERENDER WHEN DELETE OR ADD! So that they show up! */}
     </div>
   );
 }

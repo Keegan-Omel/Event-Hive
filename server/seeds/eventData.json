@@ -5,6 +5,7 @@
     "user": "user1",
     "cost": 45,
     "location": "ABC Street",
+    "seating": 1000,
     "date": "2024-08-10T12:00:00Z"
   },
   {
@@ -13,6 +14,7 @@
     "user": "user2",
     "cost": 30,
     "location": "XYZ Avenue",
+    "seating": 1000,
     "date": "2024-08-11T15:00:00Z"
   },
   {
@@ -21,14 +23,16 @@
     "user": "user3",
     "cost": 20,
     "location": "123 Park",
+    "seating": 1000,
     "date": "2024-08-12T18:00:00Z"
   },
   {
     "title": "Event 4",
     "description": "This is the fourth event",
     "user": "user1",
-    "cost": 10,
+    "cost": 100,
     "location": "456 Plaza",
+    "seating": 1000,
     "date": "2024-08-13T09:00:00Z"
   },
   {
@@ -37,6 +41,7 @@
     "user": "user2",
     "cost": 15,
     "location": "789 Mall",
+    "seating": 1000,
     "date": "2024-08-14T14:00:00Z"
   },
   {
@@ -45,6 +50,7 @@
     "user": "user3",
     "cost": 25,
     "location": "Park Street",
+    "seating": 1000,
     "date": "2024-08-15T11:00:00Z"
   },
   {
@@ -53,6 +59,7 @@
     "user": "user1",
     "cost": 50,
     "location": "Main Road",
+    "seating": 1000,
     "date": "2024-08-16T17:00:00Z"
   }
 ]
