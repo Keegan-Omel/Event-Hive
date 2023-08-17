@@ -18,7 +18,7 @@ function NavBar() {
       {/* Add the search bar */}
   <input
     type="text"
-    placeholder="Search..."
+    placeholder="Search Events..."
     value={searchTerm}
     onChange={(e) => setSearchTerm(e.target.value)}
   />

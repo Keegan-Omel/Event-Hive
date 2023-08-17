@@ -2,8 +2,8 @@ import React from 'react';
 import EventList from '../components/EventList';
 import '../assets/css/Home.css'
 
-// fix this later
-import SearchResultContainer from './SearchBar'
+// // fix this later
+// import SearchResultContainer from './SearchBar'
 
 function Home() {
   return (

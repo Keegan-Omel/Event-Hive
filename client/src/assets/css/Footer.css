@@ -3,18 +3,17 @@
 footer {
   text-align: center;
   padding: 1rem;
-  background-color: #333;
+  background-color: #032199;
   color: white;
-}
-
-.transparent-bg,
-.icon {
-  background-color: transparent;
 }
 
 .name {
   font-size: 1.3rem;
   color: #ffffff;
+}
+
+.name a:hover {
+  color: #8f9b26;
 }
 
 .icon {
