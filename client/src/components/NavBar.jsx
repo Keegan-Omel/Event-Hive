@@ -16,7 +16,7 @@ function NavBar() {
   return (
     <nav className="navbar">
       {/* Add the search bar */}
-  <input
+  <input className='searchevents'
     type="text"
     placeholder="Search Events..."
     value={searchTerm}

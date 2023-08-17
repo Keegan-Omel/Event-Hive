@@ -16,6 +16,10 @@
   color: #8f9b26;
 }
 
+.searchevents {
+  margin-left: 10px;
+}
+
 /* NavBar.css */
 .navbar {
   display: flex;
