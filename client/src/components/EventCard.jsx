@@ -6,16 +6,18 @@ function EventCard({ event }) {
 
   return (
     <div class="eventcard">
-      <h2>Title: {event.title}</h2>
-      <p>Description: {event.description}</p>
+      <h2>{event.title}</h2>
+      <p> {event.description}</p>
       <p>Date: {new Date(parseInt(event.date)).toLocaleDateString()}</p>
-      <p>Cost: {event.cost}</p>
+      <p>Cost: ${event.cost} </p>
       <p>Location: {event.location}</p>
       <p>Creator/Host: {event.user.username}</p>
 
 
       <p>Creator/Host: {event.user.email}</p>
-      <p>Creator/Host: {event.user._id}</p>
+
+      {/* not needed */}
+      {/* <p>Creator/Host: {event.user._id}</p> */}
 
 
       {attendees.length > 0 ? (
@@ -30,7 +32,12 @@ function EventCard({ event }) {
       ) : (
         <p>No one is attending so far.</p>
       )}
-      <p>Number of Seats available: {event.seating}</p>
+
+      {/* Not functional for now: FOR the future */}
+      {/* <p>Number of Seats available: {event.seating}</p> */}
+
+
+
     </div>
   );
 }

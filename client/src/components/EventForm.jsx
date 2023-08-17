@@ -49,7 +49,7 @@ const EventForm = ({showForm, setShowForm}) => {
   };
 
   return (
-    <div>
+    <div >
       <button onClick={() => setShowForm(true)}>Add Event</button>
       {showForm && (
         <form onSubmit={handleSubmit}>

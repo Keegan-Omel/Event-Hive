@@ -21,6 +21,7 @@ function Profile() {
     // Manually refetch the user data after deleting the event
     await refetch();
 
+    // just so that is is beign used...
     console.log(data);
   }
 
@@ -50,7 +51,7 @@ function Profile() {
               <p>Title: {event.title}</p>
               <p>Description: {event.description}</p>
               <p>Date: {new Date(parseInt(event.date)).toLocaleDateString()}</p>
-              <p>Cost: {event.cost}</p>
+              <p>Cost: ${event.cost}</p>
               <p>Location: {event.location}</p>
 
               <button value={event._id} onClick={(e) => handleDeleteEvent(e.target.value)}>Delete Event</button>

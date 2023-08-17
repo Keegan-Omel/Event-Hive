@@ -8,7 +8,7 @@ const resolvers = {
     users: async () => {
       try {
         const users = await User.find({}).populate("events");
-        console.log("Populated users' events:", users);
+        
         return users;
       } catch (error) {
         throw new Error("Failed to fetch users");
@@ -17,7 +17,7 @@ const resolvers = {
     user: async (parent, { _id }) => {
       try {
         const user = await User.findById(_id).populate("events");
-        console.log("Populated users' events:", user);
+        
         return user;
       } catch (error) {
         throw new Error("User not found");
@@ -123,7 +123,7 @@ const resolvers = {
         }
 
         const { _id } = context.req.user;
-        console.log("Creating event for user:", _id);
+        
 
         const event = await Event.create({
           title,
@@ -137,8 +137,6 @@ const resolvers = {
         
         // SAVES CREATED EVENT TO USER  
         await User.findByIdAndUpdate(_id, {$addToSet: {events: event._id}})
-
-        console.log("Event created:", event);
 
         return event;
       } catch (error) {

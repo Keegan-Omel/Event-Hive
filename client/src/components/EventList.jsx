@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_EVENTS } from '../utils/queries.js'; 
 import EventCard from '../components/EventCard.jsx';
 import '../assets/css/EventList.css'; // Import CSS for grid layout
 
 function EventList() {
-  const { loading, error, data } = useQuery(GET_ALL_EVENTS);
+
+  const { loading, error, data, refetch } = useQuery(GET_ALL_EVENTS);
+  
+  useEffect(() => {
+    refetch(); // Refetch events whenever the component mounts
+  }, [refetch]);
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
