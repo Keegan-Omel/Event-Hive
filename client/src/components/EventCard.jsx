@@ -5,7 +5,7 @@ function EventCard({ event }) {
   const attendees = event.attendees || []; // Initialize attendees array if undefined
 
   return (
-    <div>
+    <div class="eventcard">
       <h2>Title: {event.title}</h2>
       <p>Description: {event.description}</p>
       <p>Date: {new Date(parseInt(event.date)).toLocaleDateString()}</p>

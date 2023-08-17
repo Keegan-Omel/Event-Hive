@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Exo+2:wght@300&family=Kanit:wght@300&family=Preahvihear&family=Roboto+Condensed&family=Shadows+Into+Light&display=swap');
 
+.profilecontainer {
+    display: flex;
+    justify-content: center;
+}
+
 .profileUser, 
 .profileEmail {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -14,6 +19,8 @@
     background-color: #F9F9F9;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin: 20px;
+    background-color: #bfd0d0;
+    box-shadow: 0px 4px 6px rgba(16, 100, 227, 0.778);
 }
 
 .profileheader {

@@ -3,5 +3,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Three cards per row */
     gap: 20px; /* Space between cards */
+    padding:20px;
   }
   
