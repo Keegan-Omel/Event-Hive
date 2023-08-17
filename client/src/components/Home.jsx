@@ -7,19 +7,19 @@ import SearchResultContainer from './SearchBar'
 
 function Home() {
   return (
-    <div class="home-container"> 
- 
-  
-      <h1>FIND EVENTS</h1>
-
-      {/* SEARCH BAR COMPONENT: FIX */}
-      {/* <SearchResultContainer /> */}
-    
-      <EventList />
+    <div>
+      <div class="home-container">
+        {/* Your home-container content */}
+      </div>
+      
+      <section>
+        <h1>FIND EVENTS</h1>
+        {/* SEARCH BAR COMPONENT: FIX */}
+        {/* <SearchResultContainer /> */}
+        <EventList />
+      </section>
     </div>
-    
   );
 }
 
 export default Home;
-
