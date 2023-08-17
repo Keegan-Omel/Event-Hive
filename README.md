@@ -47,7 +47,7 @@ The application boasts a polished and responsive user interface, guaranteeing an
 
 ## Preview Images
 - ## Preview - Home
-![Preview Image](./client/src/assets/images/Web-Preview-2.png)
+![Preview Image](./client/src/assets/images/screencapture-localhost-3000-2023-08-17-17_14_31.png)
 
 ## Link To Live URL
 
