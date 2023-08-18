@@ -1,0 +1,61 @@
+/* Signup.css */
+
+.Container {
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+      background-repeat: no-repeat;
+    background-image: url('../images/signup.png');
+    background-position: center;
+    background-size: cover;
+    color: #ced4da;
+}
+
+.FormContainer {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ced4da;
+}
+
+.FormGroup {
+    margin-bottom: 20px;
+}
+
+.FormLabel {
+    font-weight: bold;
+}
+
+.FormControl {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.FormControl.is-invalid {
+    border-color: #dc3545;
+}
+
+.FormFeedback {
+    color: #dc3545;
+}
+
+.Button {
+    width: 100%;
+}
+
+.Alert {
+    margin-top: 20px;
+    
+}
