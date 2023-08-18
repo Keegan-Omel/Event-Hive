@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/css/SignUp.css';
 
 const Signup = () => {
   const [userFormData, setUserFormData] = useState({
@@ -80,8 +81,8 @@ const Signup = () => {
   };
 
   return (
-    <Container className="mt-5">
-      <h2>Sign Up</h2>
+    <Container className="Container mt-2"> {/* Replace "mt-5" with your desired margin */}
+  <h2 className="FormLabel">Sign Up</h2>
       <Form noValidate validated={false} onSubmit={handleFormSubmit}>
         <Form.Group controlId="username">
           <Form.Label>Username</Form.Label>
@@ -136,7 +137,7 @@ const Signup = () => {
         <Button
           disabled={submitting}
           type="submit"
-          variant="success"
+          variant="primary"
         >
           {submitting ? 'Signing up...' : 'Submit'}
         </Button>
