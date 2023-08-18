@@ -51,7 +51,7 @@ The application boasts a polished and responsive user interface, guaranteeing an
 
 ## Link To Live URL
 
-**Live Link** [Link To Live URL](https://) 
+**Live Link** [Link To Live URL](https://eventhive-d385699de8e6.herokuapp.com/) 
 ### this application is deployed live via GH-Pages, and can be accessed via the link above.
 
 ## Installation and Usage
@@ -66,7 +66,7 @@ npm install
 ```
 #### Run the application to initiate the server using Command at the root of the directory: 
 ```bash
-npm run start
+npm run develop
 ```
 
 ## Tests
